@@ -1,0 +1,19 @@
+{
+  "name": "alicia-lycan",
+  "version": "1.0.0",
+  "description": "NodeJS & NPM practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "NPM"
+  ],
+  "author": "Alicia Lycan",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.13.1",
+    "express": "^4.16.2"
+  }
+}
