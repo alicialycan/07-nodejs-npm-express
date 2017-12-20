@@ -73,21 +73,21 @@ articleView.setTeasers = () => {
   });
 };
 
-// COMMENT: When/where is this function invoked? What event ultimately triggers its execution? Explain the sequence of code execution when this function is invoked.
-// PUT YOUR RESPONSE HERE
+// COMMENTED: When/where is this function invoked? What event ultimately triggers its execution? Explain the sequence of code execution when this function is invoked.
+// The function is invoked in the new.html page and initialised/triggered when the new.html page loads. .tab-content will show when the page load occurs and the #export-field will hide. The #article-json event will happen when we tab/activate it, when that happens a function will run to select that element. Next, listen for an event on the #new-form for a change, or for the tab to be on any input or textarea that's new-form's children, or submit, and a function to create a #new-form will happen. 
 articleView.initNewArticlePage = () => {
   $('.tab-content').show();
   $('#export-field').hide();
-  $('#article-json').on('focus', function(){
+  $('#article-json').on('focus', function(){ //attaches an event listener and expects type of method its listening for/making active (tabbing) and a function for when that happens
     this.select();
   });
 
-  $('#new-form').on('change', 'input, textarea', articleView.create);
+  $('#new-form').on('change', 'input, textarea', articleView.create); //to be on any input or textarea that's new-form's children
   $('#new-form').on('submit', articleView.submit);
 };
 
-// COMMENT: When is this function called? What event ultimately triggers its execution?
-// PUT YOUR RESPONSE HERE
+// COMMENTED: When is this function called? What event ultimately triggers its execution?
+// The function is called in the above function (initNewArticlePage). It is triggered when the event occurs on change or any input or textarea that's new-form's children gets triggered, then the articleView.create function will execute.
 articleView.create = () => {
   let article;
   $('#articles').empty();
@@ -111,8 +111,8 @@ articleView.create = () => {
   $('#article-json').val(`${JSON.stringify(article)},`);
 };
 
-// COMMENT: When is this function called? What event ultimately triggers its execution?
-// PUT YOUR RESPONSE HERE
+// COMMENTED: When is this function called? What event ultimately triggers its execution?
+// It is called in the new.html when the submit button is clicked for the new form.
 articleView.submit = event => {
   event.preventDefault();
   let article = new Article({
@@ -124,14 +124,14 @@ articleView.submit = event => {
     publishedOn: $('#article-published:checked').length ? new Date() : null
   });
 
-  // COMMENT: Where is this function defined? When is this function called? What event ultimately triggers its execution?
-  // PUT YOUR RESPONSE HERE
+  // COMMENTED: Where is this function defined? When is this function called? What event ultimately triggers its execution?
+  // It is defined in article.js in the prototype method attached to the Article constructor. It is called below in articleView.js. It is triggered when the submit button is clicked on the form by the user.
   article.insertRecord();
 }
 
 articleView.initIndexPage = () => {
-  Article.all.forEach(article =>{
-    $('#articles').append(article.toHtml())
+  Article.all.forEach(article => { //Article is an object with propertes (key/value pair), has a property all (array of article instances (run new Article and store that in something)). For each goes through the array and runs a function. That function needs to except atleast 1 thing, item in position 0...for each instance pass through item in array.
+    $('#articles').append(article.toHtml()) //will append (wants a string of proper HTML) to the #articles element the result of calling toHTML on that article. Converts string into real Html and adds it to the DOM (#articles element).
   });
 
   articleView.populateFilters();

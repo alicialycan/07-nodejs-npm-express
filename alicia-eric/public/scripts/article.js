@@ -44,7 +44,7 @@ Article.fetchAll = () => {
 }
 
 // REVIEW: This new prototype method on the Article object constructor will allow us to create a new article from the new.html form page, and submit that data to the back-end. We will see this log out to the server in our terminal!
-Article.prototype.insertRecord = function(callback) { //function is taking in an argument called callback. It's kind of like an optional parameter; give something here then we'll call it, don't give something, won't call it.
+Article.prototype.insertRecord = function(callback) { //may be calling a callback, function is taking in an argument called callback. It's kind of like an optional parameter; give something here then we'll call it, don't give something, won't call it.
   $.post('/articles', {author: this.author, authorUrl: this.authorUrl, body: this.body, category: this.category, publishedOn: this.publishedOn, title: this.title})
     .then(data => {
       console.log(data);
