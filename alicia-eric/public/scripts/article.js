@@ -50,7 +50,7 @@ Article.prototype.insertRecord = function(callback) { //may be calling a callbac
       console.log(data);
 
       // COMMENTED: What is the purpose of this line? Is the callback invoked when this method is called? Why or why not?
-      // This line is saying: do the callback if you can. The calllback is invoked if the parameter above is truthey. It is currently undefined which means it is falsey and thus not invoked. 
-      if (callback) callback(); //if callback then callback (if looks for something truthy of falsey) 
+      // This line is saying: do the callback if you can. The calllback is invoked as an argument if the parameter above is truthey. It is currently undefined which means it is falsey and thus not invoked. 
+      if (callback) callback(); //if callback then callback (if with a parameter inside of a function-looks for something truthy of falsey) 
     })
 };

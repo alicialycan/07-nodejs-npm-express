@@ -74,7 +74,7 @@ articleView.setTeasers = () => {
 };
 
 // COMMENTED: When/where is this function invoked? What event ultimately triggers its execution? Explain the sequence of code execution when this function is invoked.
-// The function is invoked in the new.html page and initialised/triggered when the new.html page loads. .tab-content will show when the page load occurs and the #export-field will hide. The #article-json event will happen when we tab/activate it, when that happens a function will run to select that element. Next, listen for an event on the #new-form for a change, or for the tab to be on any input or textarea that's new-form's children, or submit, and a function to create a #new-form will happen. 
+// The function is invoked in the new.html page and initialised/triggered when the new.html page loads. .tab-content will show when the page load occurs and the #export-field will hide. The #article-json event will happen when we tab/activate it, when that happens a function will run to select that element. Next,listen for an event on the #new-form for a change, or for the tab to be on any input or textarea that's new-form's children, or submit, and a function to create a #new-form will happen. 
 articleView.initNewArticlePage = () => {
   $('.tab-content').show();
   $('#export-field').hide();
@@ -82,7 +82,7 @@ articleView.initNewArticlePage = () => {
     this.select();
   });
 
-  $('#new-form').on('change', 'input, textarea', articleView.create); //to be on any input or textarea that's new-form's children
+  $('#new-form').on('change', 'input, textarea', articleView.create); //listening to new form element going to listen to children, when either of those change run that function.
   $('#new-form').on('submit', articleView.submit);
 };
 

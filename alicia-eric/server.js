@@ -10,16 +10,21 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public'))
 
-app.post('/articles', bodyParser, function(request, response) {
-  // REVIEW: This route will receive a new article from the form page, new.html, and log that form data to the console. We will wire this up soon to actually write a record to our persistence layer!
-  console.log(request.body);
-  response.send('Record posted to server!!');
-})
+app.get('/', (req, res) => {
+  response.sendFile('index.html', {root:'./public'});
+});
 
-// app.get('/', (request, response) => {
-//   response.send('some string')
-// })
+app.get('/new', (req, res) => {
+  response.sendFile('new.html', {root:'./public'})
+});
+
+app.post('/articles', bodyParser, function(req, res) {
+  // REVIEW: This route will receive a new article from the form page, new.html, and log that form data to the console. We will wire this up soon to actually write a record to our persistence layer!
+  response.send(request.body);
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`)
-})
+});
+
+app.use((req, res) => response.status(404).sendFile('404.html', {root: './public'}));
